@@ -1,0 +1,27 @@
+server:
+  port: 8040
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
+zuul:
+  ignored-services: '*'
+  routes:
+    microservice-provider-user: /provider-user/**
+    microservice-provider-bill: /provider-bill/**
+  sensitiveHeaders: Cookie,Set-Cookie,Authorization
+
+info:
+  description: 网关

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: hystrix-dashborad
+server:
+  port: 8004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+
+logging:
+  level:
+    root: INFO
+    com.netflix.discovery: 'OFF'
+    org.springframework.integration: DEBUG
+
+info:
+  description: Hystrix Dashboard是Hystrix的仪表盘组件，主要用来实时监控Hystrix的各项指标信息，通过界面反馈的信息可以快速发现系统中存在的问题。
