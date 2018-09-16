@@ -9,6 +9,7 @@ spring:
         git:
           uri: https://github.com/tuacy/spring-cloud-config.git
           default-label: master
+          search-paths: /**
 eureka:
     client:
       service-url:
