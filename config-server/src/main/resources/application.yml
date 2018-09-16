@@ -2,7 +2,7 @@ server:
   port: 8001
 spring:
   application:
-    name: config-server
+    name: microservice-center-config-server
   cloud:
     config:
       server:
@@ -10,6 +10,13 @@ spring:
           uri: https://github.com/tuacy/spring-cloud-config.git
           default-label: master
           search-paths: /**
+          force-pull: true
+        health: ## 健康指标
+          repositories:
+            microservice-framework-user-manage:
+              label: master
+
+
 eureka:
     client:
       service-url:
@@ -18,7 +25,6 @@ eureka:
     instance:
       #向注册中心注册IP
       prefer-ip-address: true
-      appname: config-server
       instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 info:
-  description: 配置中心
+  description: 配置中心(管理应用程序的外部配置属性)

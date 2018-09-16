@@ -1,6 +1,6 @@
 spring:
   application:
-    name: hystrix-dashborad
+    name: microservice-center-hystrix-dashborad
 server:
   port: 8004
 eureka:

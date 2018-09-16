@@ -2,7 +2,7 @@ server:
   port: 8989
 spring:
   application:
-    name: turbine-rabbitmq
+    name: microservice-center-turbine-rabbitmq
   rabbitmq:
     host: localhost
     port: 5672

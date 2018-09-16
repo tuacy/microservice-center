@@ -3,7 +3,7 @@ server:
   port: 8761
 spring:
   application:
-    name: eureka-server
+    name: microservice-center-eureka-server
 eureka:
   instance:
     hostname: localhost
