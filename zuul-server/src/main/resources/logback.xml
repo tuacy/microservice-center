@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+    <property name="type.name" value="test" />
+    <!--<appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">-->
+        <!--<source>spring-application</source>-->
+        <!--<type>${type.name}</type>-->
+        <!--<host>192.168.9.88</host>-->
+        <!--<key>logstash:redis</key>-->
+        <!--<tags>test-2</tags>-->
+        <!--<mdc>true</mdc>-->
+        <!--<location>true</location>-->
+        <!--<callerStackIndex>0</callerStackIndex>-->
+        <!--&lt;!&ndash;additionalField添加附加字段 用于head插件显示 &ndash;&gt;-->
+        <!--<additionalField>-->
+            <!--<key>MyKey</key>-->
+            <!--<value>MyValue</value>-->
+        <!--</additionalField>-->
+        <!--<additionalField>-->
+            <!--<key>MySecondKey</key>-->
+            <!--<value>MyOtherValue</value>-->
+        <!--</additionalField>-->
+    <!--</appender>-->
+
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <!--<appender-ref ref="LOGSTASH" />-->
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

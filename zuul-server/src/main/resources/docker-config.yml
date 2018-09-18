@@ -1,0 +1,7 @@
+FROM anapsix/alpine-java
+MAINTAINER Jerome Loisel
+EXPOSE 2225
+COPY maven /maven/
+CMD java -Dspring.profiles.active="docker" -jar \
+/maven/zuul-server.jar server \
+/maven/docker-config.yml
